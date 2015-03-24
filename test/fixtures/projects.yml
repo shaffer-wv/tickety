@@ -1,0 +1,38 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+most_recent:
+  title: "Short test"
+  created_at: <%= Time.zone.now %>
+  user: josh
+
+one:
+  title: "Another test"
+  created_at: <%= 10.minutes.ago %>
+  user: josh
+
+two:
+  title: "Third test"
+  created_at: <%= 2.hours.ago %>
+  user: josh
+
+<% 30.times do |n| %>
+project_<%= n %>:
+  title: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 10.days.ago %>
+  user: josh
+<% end %>
+
+four:
+  title: "Fourth test"
+  created_at: <%= 2.years.ago %>
+  user: sam
+
+five:
+  title: "Fifth test"
+  created_at: <%= 2.years.ago %>
+  user: sam
+
+six:
+  title: "Sixth test"
+  created_at: <%= 2.years.ago %>
+  user: lana

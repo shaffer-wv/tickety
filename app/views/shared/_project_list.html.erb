@@ -1,0 +1,6 @@
+<% if @project_list.any? %>
+  <ol class="projects">
+    <%= render @project_list %>
+  </ol>
+  <%= will_paginate @project_list %>
+<% end %>

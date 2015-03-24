@@ -22,3 +22,9 @@ User.create!(name: "Example User",
                password: password,
                password_confirmation: password)
 end
+
+users = User.order(:created_at).take(6)
+5.times do
+  title = Faker::Lorem.sentence(5)
+  users.each { |user| user.projects.create!(title: title) }
+end
