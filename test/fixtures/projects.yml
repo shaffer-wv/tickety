@@ -2,37 +2,44 @@
 
 most_recent:
   title: "Short test"
+  description: "this is a test"
   created_at: <%= Time.zone.now %>
   user: josh
 
 one:
   title: "Another test"
+  description: "this is a test"
   created_at: <%= 10.minutes.ago %>
   user: josh
 
 two:
   title: "Third test"
+  description: "this is a test"
   created_at: <%= 2.hours.ago %>
   user: josh
 
 <% 30.times do |n| %>
 project_<%= n %>:
-  title: <%= Faker::Lorem.sentence(5) %>
+  title: <%= Faker::Lorem.sentence(3) %>
+  description: <%= Faker::Lorem.sentence(5) %>
   created_at: <%= 10.days.ago %>
   user: josh
 <% end %>
 
 four:
   title: "Fourth test"
+  description: "this is a test"
   created_at: <%= 2.years.ago %>
   user: sam
 
 five:
   title: "Fifth test"
+  description: "this is a test"
   created_at: <%= 2.years.ago %>
   user: sam
 
 six:
   title: "Sixth test"
+  description: "this is a test"
   created_at: <%= 2.years.ago %>
   user: lana

@@ -1,0 +1,15 @@
+<div class="project">
+<li id="project-<%= @project.id %>">
+  <span class="title"><%= @project.title %></span>
+  <span class="description"><%= @project.description %></span>
+  <span class="user">Project Admin: <%= link_to @project.user.name, @project.user %></span>
+  
+  <span class="timestamp">
+    Created <%= time_ago_in_words(@project.created_at) %> ago.
+    <% if current_user?(@project.user) %>
+      <%= link_to 'delete', @project, method: :delete, data: {confirm: "You sure?" } %> | 
+      <%= link_to 'edit', edit_project_path(@project) %>
+    <% end %>
+  </span>
+</li>
+</div>

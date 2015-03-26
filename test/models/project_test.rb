@@ -4,7 +4,7 @@ class ProjectTest < ActiveSupport::TestCase
   
   def setup
     @user = users(:josh)
-    @project = @user.projects.build(title: "Create a test server")
+    @project = projects(:most_recent)
   end
 
   test "should be valid" do
@@ -21,8 +21,18 @@ class ProjectTest < ActiveSupport::TestCase
     assert_not @project.valid?
   end
 
-  test "title should be at most 140 characters" do
+  test "description should be present" do
+    @project.description = nil
+    assert_not @project.valid?
+  end
+
+  test "title should be at most 40 characters" do
     @project.title = 'a' * 141
+    assert_not @project.valid?
+  end
+
+  test "description should be at most 140 characters" do
+    @project.description = 'a' * 141
     assert_not @project.valid?
   end
 

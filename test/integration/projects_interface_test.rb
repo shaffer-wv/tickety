@@ -16,9 +16,10 @@ class ProjectsInterfaceTest < ActionDispatch::IntegrationTest
     end
     assert_select 'div#error_explanation'
     # Valid submission
-    title = "This is a test project title"
+    title = "Test Project"
+    description = "This is a test project title"
     assert_difference 'Project.count', 1 do
-      post projects_path, project: { title: title }
+      post projects_path, project: { title: title, description: description }
     end
     assert_redirected_to root_url
     follow_redirect!

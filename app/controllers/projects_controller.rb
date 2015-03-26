@@ -13,6 +13,25 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def show
+    @project = Project.find(params[:id])
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+
+    if @project.update_attributes(project_params)
+      flash[:success] = "Information Updated"
+      redirect_to @project
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @project.destroy
     flash[:success] = "Project deleted"
@@ -22,7 +41,7 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.require(:project).permit(:title)
+      params.require(:project).permit(:title, :description)
     end
 
     def correct_user
