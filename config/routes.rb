@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   
   get 'sessions/new'
 
-  get 'users/new'
-
   root 'static_pages#home'
 
   get 'help'        => 'static_pages#help'
@@ -15,7 +13,9 @@ Rails.application.routes.draw do
   delete 'logout'      => 'sessions#destroy'
 
   resources :users
-  resources :projects, except: :index
+  resources :projects, except: :index do
+    resources :task_lists
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

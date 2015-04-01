@@ -1,15 +1,28 @@
 <div class="project">
-<li id="project-<%= @project.id %>">
-  <span class="title"><%= @project.title %></span>
-  <span class="description"><%= @project.description %></span>
-  <span class="user">Project Admin: <%= link_to @project.user.name, @project.user %></span>
-  
-  <span class="timestamp">
-    Created <%= time_ago_in_words(@project.created_at) %> ago.
-    <% if current_user?(@project.user) %>
-      <%= link_to 'delete', @project, method: :delete, data: {confirm: "You sure?" } %> | 
-      <%= link_to 'edit', edit_project_path(@project) %>
-    <% end %>
-  </span>
-</li>
+  <div class="project-info">
+    <li id="project-<%= @project.id %>">
+      <span class="title"><%= @project.title %></span>
+      <span class="description"><%= @project.description %></span>
+      <span class="user">Project Admin: <%= link_to @project.user.name, @project.user %></span>
+      
+      <span class="timestamp">
+        Created <%= time_ago_in_words(@project.created_at) %> ago.
+        <% if current_user?(@project.user) %>
+          <%= link_to 'delete', @project, method: :delete, data: {confirm: "You sure?" } %> | 
+          <%= link_to 'edit', edit_project_path(@project) %>
+        <% end %>
+      </span>
+    </li>
+  </div>
+  <div class="navbar">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Task Lists", project_task_lists_path(@project) %></li>
+      <li><%= link_to "Discussions", '#' %></li>
+    </ul>    
+  </div>
+  <div class="summary">
+    This will contain a visual summary for the project. It will have latest updates, lastest discussions, task lists, files, etc.
+  </div>
 </div>
+
+ 

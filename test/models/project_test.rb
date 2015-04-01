@@ -39,4 +39,12 @@ class ProjectTest < ActiveSupport::TestCase
   test "order should be most recent first" do
     assert_equal Project.first, projects(:most_recent)
   end
+
+  test "associated task lists should be destroyed" do
+    @project.save
+    @project.task_lists.create!(name: "Test List")
+    assert_difference 'TaskList.count', -1 do
+      @project.destroy
+    end
+  end
 end
